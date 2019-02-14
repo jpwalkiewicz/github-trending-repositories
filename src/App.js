@@ -67,20 +67,21 @@ class App extends Component {
 
   savedRadioChecked = (type) => {
     console.log(type);
-    return this.state.dateRange === type;
+    return this.state.dateRange === type ? 'checked' : '';
   }
 
   render() {
     return (
       <div className="App">
         <input type="radio" name="dateRange" value="daily" id="daily" 
-        defaultChecked={this.savedRadioChecked('daily')} 
+        
+      checked={`${this.savedRadioChecked('daily')}`}
         onChange={this.dateRangeChange}/>  <label htmlFor="daily">Daily</label>
         <input type="radio" name="dateRange" value="weekly" id="weekly" 
-        defaultChecked={this.savedRadioChecked('weekly')} 
+        checked={`${this.savedRadioChecked('weekly')}`}
         onChange={this.dateRangeChange}/><label htmlFor="weekly">Weekly</label>
         <input type="radio" name="dateRange" value="monthly" id="monthly" 
-        defaultChecked={this.savedRadioChecked('monthly')} 
+        checked={`${this.savedRadioChecked('monthly')}`} 
         onChange={this.dateRangeChange}/><label htmlFor="monthly">Monthly</label><br/>
         <select onChange={this.languageChange} value={this.state.selectedLanguage}>
           <optgroup>
