@@ -59,9 +59,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <input type="radio" name="dateRange" value="daily" onChange={this.dateRangeChange}/>Daily<br/>
-        <input type="radio" name="dateRange" value="weekly" onChange={this.dateRangeChange}/>Weekly<br/>
-        <input type="radio" name="dateRange" value="monthly" onChange={this.dateRangeChange}/>Monthly<br/> 
+        <input type="radio" name="dateRange" value="daily" id="daily" defaultChecked onChange={this.dateRangeChange}/>  <label htmlFor="daily">Daily</label>
+        <input type="radio" name="dateRange" value="weekly" id="weekly" onChange={this.dateRangeChange}/><label htmlFor="weekly">Weekly</label>
+        <input type="radio" name="dateRange" value="monthly" id="monthly" onChange={this.dateRangeChange}/><label htmlFor="monthly">Monthly</label><br/>
         <select onChange={this.languageChange} value={this.state.value}>
           <optgroup>
             <option value='' key="All">All</option>
@@ -78,13 +78,13 @@ class App extends Component {
           </optgroup>
         </select>
         {this.state.isDataLoading && <h1>LOADING</h1>}
-        {this.state.data.length == 0
+        {this.state.data.length === 0
           && !this.state.isDataLoading
-          && <h2>Sorry no data for this language</h2>}
+          && <h2>Sorry, no data available for this language</h2>}
         <ul>
           {!this.state.isDataLoading 
             && this.state.data
-            && this.state.data.map(el => <li key={el.name}>{el.name}</li>)}
+            && this.state.data.map(el => <li key={`${el.name} ${el.description}`}>{el.name}</li>)}
         </ul>
       </div>
     );
