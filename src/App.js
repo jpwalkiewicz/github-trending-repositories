@@ -50,7 +50,7 @@ class App extends Component {
 
   getSavedOptions = () => {
     this.setState({
-      dateRange: window.localStorage.getItem('dateRange') || '',
+      dateRange: window.localStorage.getItem('dateRange') || 'daily',
       selectedLanguage: window.localStorage.getItem('selectedLanguage') || '',
     }, () => this.getData())
   }
