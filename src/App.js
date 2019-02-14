@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getData();
+    this.getSavedOptions();
     this.getLanguages();
   }
 
@@ -48,21 +48,41 @@ class App extends Component {
       });
   }
 
+  getSavedOptions = () => {
+    this.setState({
+      dateRange: window.localStorage.getItem('dateRange') || '',
+      selectedLanguage: window.localStorage.getItem('selectedLanguage') || '',
+    }, () => this.getData())
+  }
+
   dateRangeChange = evt => {
     this.setState({dateRange: evt.target.value}, () => this.getData());
+    window.localStorage.setItem('dateRange', evt.target.value);
   }
 
   languageChange = evt => {
     this.setState({selectedLanguage: evt.target.value}, () => this.getData());
+    window.localStorage.setItem('selectedLanguage', evt.target.value);
+  }
+
+  savedRadioChecked = (type) => {
+    console.log(type);
+    return this.state.dateRange === type;
   }
 
   render() {
     return (
       <div className="App">
-        <input type="radio" name="dateRange" value="daily" id="daily" defaultChecked onChange={this.dateRangeChange}/>  <label htmlFor="daily">Daily</label>
-        <input type="radio" name="dateRange" value="weekly" id="weekly" onChange={this.dateRangeChange}/><label htmlFor="weekly">Weekly</label>
-        <input type="radio" name="dateRange" value="monthly" id="monthly" onChange={this.dateRangeChange}/><label htmlFor="monthly">Monthly</label><br/>
-        <select onChange={this.languageChange} value={this.state.value}>
+        <input type="radio" name="dateRange" value="daily" id="daily" 
+        defaultChecked={this.savedRadioChecked('daily')} 
+        onChange={this.dateRangeChange}/>  <label htmlFor="daily">Daily</label>
+        <input type="radio" name="dateRange" value="weekly" id="weekly" 
+        defaultChecked={this.savedRadioChecked('weekly')} 
+        onChange={this.dateRangeChange}/><label htmlFor="weekly">Weekly</label>
+        <input type="radio" name="dateRange" value="monthly" id="monthly" 
+        defaultChecked={this.savedRadioChecked('monthly')} 
+        onChange={this.dateRangeChange}/><label htmlFor="monthly">Monthly</label><br/>
+        <select onChange={this.languageChange} value={this.state.selectedLanguage}>
           <optgroup>
             <option value='' key="All">All</option>
           </optgroup>
@@ -77,15 +97,44 @@ class App extends Component {
               <option value={lang.urlParam} key={lang.name}>{lang.name}</option>)}
           </optgroup>
         </select>
-        {this.state.isDataLoading && <h1>LOADING</h1>}
         {this.state.data.length === 0
           && !this.state.isDataLoading
           && <h2>Sorry, no data available for this language</h2>}
-        <ul>
+        <table>
+          <thead>
+            <tr>
+              <th>
+                No.
+              </th>
+              <th>
+                Language
+              </th>
+              <th>
+                Repo Name
+              </th>
+              <th>
+                Author
+              </th>
+            </tr>
+          </thead>
+          <tbody>
           {!this.state.isDataLoading 
             && this.state.data
-            && this.state.data.map(el => <li key={`${el.name} ${el.description}`}>{el.name}</li>)}
-        </ul>
+            && this.state.data.map((el, index) => {
+              const bcgColor = {backgroundColor: el.languageColor};
+             return <tr key={`${el.name} ${el.description}`}>
+                <td>{index + 1}</td>
+                <td style={bcgColor}>{el.language ? el.language : '----'}</td>
+                <td>{el.name}</td>
+                <td>{el.author}</td>
+              </tr>
+              }
+            )}
+            {this.state.isDataLoading && <tr><th colSpan="4">LOADNIG</th></tr>}
+          </tbody>
+        </table>
+         
+        
       </div>
     );
   }
