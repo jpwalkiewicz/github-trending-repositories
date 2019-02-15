@@ -77,23 +77,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
+        <DateOption
+          value="daily"
+          onChange={this.dateRangeChange}
+          dateRange={this.state.dateRange}
+        />
+        <DateOption
+          value="weekly"
+          onChange={this.dateRangeChange}
+          dateRange={this.state.dateRange}
+        />
         <DateOption
           value="monthly"
           onChange={this.dateRangeChange}
           dateRange={this.state.dateRange}
         />
-
-<input type="radio" name="dateRange" value="daily" id="daily" 
-        checked={this.savedRadioChecked('daily')}
-        onChange={this.dateRangeChange}/><label htmlFor="daily">Daily</label>
-       
-        <input type="radio" name="dateRange" value="weekly" id="weekly" 
-        checked={this.savedRadioChecked('weekly')}
-        onChange={this.dateRangeChange}/><label htmlFor="weekly">Weekly</label>
-        {/* <input type="radio" name="dateRange" value="monthly" id="monthly" 
-        checked={this.savedRadioChecked('monthly')}
-        onChange={this.dateRangeChange}/><label htmlFor="monthly">Monthly</label><br/>*/}
         <LanguageOptions  
           onChange={this.languageChange} 
           selectedLanguage={this.state.selectedLanguage}
