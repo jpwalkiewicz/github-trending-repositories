@@ -11,7 +11,7 @@ export default function DateOption(props) {
       name="dateRange" 
       value={props.value} 
       id={props.value} 
-      onChange={(e) => props.dateRangeChange(e)}
+      onChange={props.onChange}
       checked={props.dateRange === props.value ? 'checked' : ''}
     />
     <label htmlFor={props.value}>{props.value}</label><br/>
