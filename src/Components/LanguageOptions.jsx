@@ -11,12 +11,22 @@ export default function LanguageOptions(props) {
       <option value='' key="All">All</option>
     </optgroup>
     <optgroup label="Popular">
-    {isListReady && props.languagesList.popular.map(lang => 
-        <option value={lang.urlParam} key={lang.name}>{lang.name}</option>)}
+      {isListReady && props.languagesList.popular.map(lang => 
+        <option 
+          value={lang.urlParam} 
+          key={lang.name}
+        >
+          {lang.name}
+        </option>)}
     </optgroup>
     <optgroup label="Other">
-    {isListReady && props.languagesList.all.map(lang => 
-        <option value={lang.urlParam} key={lang.name}>{lang.name}</option>)}
+      {isListReady && props.languagesList.all.map(lang => 
+        <option 
+          value={lang.urlParam} 
+          key={lang.name}
+        >
+          {lang.name}
+        </option>)}
     </optgroup>
   </select>)
 }

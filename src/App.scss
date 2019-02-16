@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Source+Code+Pro');
+
+
+body {
+  background-image: linear-gradient(45deg, #ffffff 25%, #fafafa 25%, #fafafa 50%, #ffffff 50%, #ffffff 75%, #fafafa 75%, #fafafa 100%);
+background-size: 20.00px 20.00px;
+}
+
+.App {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 16px;
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
+
+h2, h3 {
+  font-size: 16px;
+}
+
+.list-options {
+  margin: 30px auto 10px auto;
+  text-align: center;
+
+  &-label {
+    font-weight: 600;
+    margin-right: 10px;
+
+    &__second {
+      margin-left: 20px;
+    }
+  }
+}
+
+.input-wrapper {
+  display: inline;
+  margin-right: 10px;
+}
+
+
+.data-table {
+  width: 100%;
+  border: 2px solid gray;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.data-table-head {
+  background-color: #a8adad;
+  height: 40px;
+  text-align: left
+}
+
+.row {
+  height: 30px;  
+  border: 1px solid #f2f2f2;
+  &:hover {
+    box-shadow: 0px 0px 23px -4px rgba(0,0,0,0.75);
+  
+  }
+}
+
+
+.td-no {
+  text-align: center
+}
+
+.td-language {
+  font-family: 'Source Code Pro';
+}
+
+.td-link a {
+  text-decoration: none;
+}
+
+
+.td-language-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+
+
+.dot-loader {
+  position: relative;
+  overflow: hidden;
+  height: 10px;
+  width: 100%;
+
+  .dots {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10px;
+    height: 10px; 
+    border-radius: 50%;
+    background-color: red;
+    animation: dot-move 2s infinite cubic-bezier(.2, .64, .81, .23);
+
+    &:nth-child(2) {
+      animation-delay: 150ms;
+    }
+    &:nth-child(3) {
+      animation-delay: 300ms;
+    }
+    &:nth-child(4) {
+      animation-delay: 450ms;
+    }
+  }
+
+  @keyframes dot-move {
+    0% {left: 0%;}
+    75% {left:100%;}
+    100% {left:100%;}
+  }
+}

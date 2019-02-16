@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export default function DateOption(props) {
 
   return (
-  <div>
+  <div className="input-wrapper">
     <input 
       type="radio" 
       name="dateRange" 
@@ -13,9 +13,9 @@ export default function DateOption(props) {
       id={props.value} 
       onChange={props.onChange}
       checked={props.dateRange === props.value ? 'checked' : ''}
+      className="date-select"
     />
-    <label htmlFor={props.value}>{props.value}</label><br/>
-       
+    <label htmlFor={props.value} className="date-select-label">{props.value}</label>
   </div> )
 }
 

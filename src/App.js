@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import LanguageOptions from './Components/LanguageOptions';
 import DateOption from './Components/DateOption';
 import DataTabel from './Components/DataTable'
@@ -37,12 +37,13 @@ class App extends Component {
   getData = () => {
     const language = this.state.selectedLanguage ? `&language=${this.state.selectedLanguage}` : '';
     const dateRange = this.state.dateRange ? `&since=${this.state.dateRange}` : '';
+    const linkTofetch = `https://github-trending-api.now.sh/repositories?${language}${dateRange}`;
 
     this.setState({
       isDataLoading: true,
     });
   
-    fetch(`https://github-trending-api.now.sh/repositories?${language}${dateRange}`)
+    fetch(linkTofetch)
       .then(response => response.json())
       .then(response => {
         this.setState({
@@ -60,7 +61,6 @@ class App extends Component {
   }
 
   dateRangeChange = evt => {
-    console.log(evt.target.value);
     this.setState({dateRange: evt.target.value}, () => this.getData());
     window.localStorage.setItem('dateRange', evt.target.value);
   }
@@ -70,13 +70,18 @@ class App extends Component {
     window.localStorage.setItem('selectedLanguage', evt.target.value);
   }
 
-  savedRadioChecked = (type) => {
-    return this.state.dateRange === type ? 'checked' : '';
-  }
-
   render() {
     return (
       <div className="App">
+      <h1>Github trending repositories</h1>
+      <h2>Check what repositories are trending now</h2>
+      <h3>
+        This website uses API from github repository <a href="https://github.com/huchenme/github-trending-api" target="_blank" rel="noopener noreferrer">
+         github-trending-api
+        </a>
+      </h3>
+      <div className="list-options">
+        <span className="list-options-label">Trending period:</span> 
         <DateOption
           value="daily"
           onChange={this.dateRangeChange}
@@ -92,12 +97,17 @@ class App extends Component {
           onChange={this.dateRangeChange}
           dateRange={this.state.dateRange}
         />
+       <span className="list-options-label list-options-label__second">Language:</span>
         <LanguageOptions  
           onChange={this.languageChange} 
           selectedLanguage={this.state.selectedLanguage}
           languagesList={this.state.languagesList}
         />
-        <DataTabel isDataLoading={this.state.isDataLoading} data={this.state.data}/>        
+      </div>
+        <DataTabel 
+          isDataLoading={this.state.isDataLoading} 
+          data={this.state.data}
+        />        
       </div>
     );
   }
