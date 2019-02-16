@@ -1,5 +1,8 @@
 # Github trending repositories
 ### Checkout which repository is trending now
+
+[Live view](https://jpwalkiewicz.github.io/github-trending-repositories/)
+
 This project uses API from github repository [github-trending-api](https://github.com/huchenme/github-trending-api) and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Available Scripts
