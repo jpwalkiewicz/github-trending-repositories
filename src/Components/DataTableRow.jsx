@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export default function DataTable(props) {
 
-  const {name, language, author, url, languageColor} = props.item;
+  const {name, language, stars, forks,  author, url, languageColor} = props.item;
   const bcgColor = {backgroundColor: languageColor};
 
   return (
@@ -12,8 +12,10 @@ export default function DataTable(props) {
       <td className="td-no">{props.index + 1}</td>
       <td className="td-language">
         <span className="td-language-dot" style={bcgColor}/>
-        {language ? language : '- - - -'}
+        {language ? language : '----'}
         </td>
+      <td className="td-stars">{stars}</td>
+      <td className="td-forks">{forks}</td>
       <td className="td-name">{name}</td>
       <td className="td-author">{author}</td>
       <td className="td-link">

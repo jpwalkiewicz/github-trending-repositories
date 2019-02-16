@@ -1,14 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto|Source+Code+Pro');
-
+@import 'scss/base';
+@import 'scss/mixins';
 
 body {
-  background-image: linear-gradient(45deg, #ffffff 25%, #fafafa 25%, #fafafa 50%, #ffffff 50%, #ffffff 75%, #fafafa 75%, #fafafa 100%);
-background-size: 20.00px 20.00px;
+  color: $font;
+  background-image: $bcg-gradient;
+  background-size: 20.00px 20.00px;
 }
 
 .App {
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 16px;
+  margin: 0 auto;
+  max-width: 1024px;
 }
 
 h1, h2, h3 {
@@ -20,16 +23,34 @@ h2, h3 {
 }
 
 .list-options {
+  display: flex;
+  flex-direction: column;
   margin: 30px auto 10px auto;
-  text-align: center;
+
+  @include breakpoint(tablet) {
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+  }
 
   &-label {
     font-weight: 600;
     margin-right: 10px;
 
     &__second {
-      margin-left: 20px;
+      @include breakpoint(tablet) {
+        margin-left: 20px;
+      }
     }
+  }
+}
+
+.list-options-label, 
+.input-wrapper {
+  margin-bottom: 10px;
+
+  @include breakpoint(tablet) {
+    margin-bottom: 0;
   }
 }
 
@@ -38,29 +59,33 @@ h2, h3 {
   margin-right: 10px;
 }
 
+.language-option {
+  max-width: 200px;
+}
+
 
 .data-table {
   width: 100%;
-  border: 2px solid gray;
+  border: 2px solid $border-table;
   border-collapse: collapse;
   background-color: white;
+  margin-bottom: 50px;
+  overflow: hidden;
 }
 
 .data-table-head {
-  background-color: #a8adad;
+  background-color: $table-head;
   height: 40px;
   text-align: left
 }
 
 .row {
   height: 30px;  
-  border: 1px solid #f2f2f2;
+  border: 1px solid $border-row;
   &:hover {
-    box-shadow: 0px 0px 23px -4px rgba(0,0,0,0.75);
-  
+    box-shadow: $boxshadow-hover;
   }
 }
-
 
 .td-no {
   text-align: center
@@ -74,7 +99,6 @@ h2, h3 {
   text-decoration: none;
 }
 
-
 .td-language-dot {
   display: inline-block;
   width: 10px;
@@ -83,7 +107,22 @@ h2, h3 {
   margin-right: 10px;
 }
 
+.td-author {
+  display: none;
 
+  @include breakpoint(tablet) {
+    display: table-cell;
+  }
+}
+
+.td-stars,
+.td-forks {
+  display: none;
+
+  @include breakpoint(desktop) {
+    display: table-cell;
+  }
+}
 
 .dot-loader {
   position: relative;
@@ -95,10 +134,11 @@ h2, h3 {
     position: absolute;
     left: 0;
     top: 0;
+    transform: translateX(-10px);
     width: 10px;
     height: 10px; 
     border-radius: 50%;
-    background-color: red;
+    background-color: $loader-dot;
     animation: dot-move 2s infinite cubic-bezier(.2, .64, .81, .23);
 
     &:nth-child(2) {
@@ -115,6 +155,6 @@ h2, h3 {
   @keyframes dot-move {
     0% {left: 0%;}
     75% {left:100%;}
-    100% {left:100%;}
+    100% {left:110%;}
   }
 }

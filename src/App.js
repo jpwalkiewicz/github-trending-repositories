@@ -73,37 +73,37 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <h1>Github trending repositories</h1>
-      <h2>Check what repositories are trending now</h2>
-      <h3>
-        This website uses API from github repository <a href="https://github.com/huchenme/github-trending-api" target="_blank" rel="noopener noreferrer">
-         github-trending-api
-        </a>
-      </h3>
-      <div className="list-options">
-        <span className="list-options-label">Trending period:</span> 
-        <DateOption
-          value="daily"
-          onChange={this.dateRangeChange}
-          dateRange={this.state.dateRange}
-        />
-        <DateOption
-          value="weekly"
-          onChange={this.dateRangeChange}
-          dateRange={this.state.dateRange}
-        />
-        <DateOption
-          value="monthly"
-          onChange={this.dateRangeChange}
-          dateRange={this.state.dateRange}
-        />
-       <span className="list-options-label list-options-label__second">Language:</span>
-        <LanguageOptions  
-          onChange={this.languageChange} 
-          selectedLanguage={this.state.selectedLanguage}
-          languagesList={this.state.languagesList}
-        />
-      </div>
+        <h1>Github trending repositories</h1>
+        <h2>Checkout which repository is trending now</h2>
+        <h3>
+          This website uses API from github repository <a href="https://github.com/huchenme/github-trending-api" target="_blank" rel="noopener noreferrer">
+          github-trending-api
+          </a>
+        </h3>
+        <div className="list-options">
+          <span className="list-options-label">Trending period:</span> 
+          <DateOption
+            value="daily"
+            onChange={this.dateRangeChange}
+            dateRange={this.state.dateRange}
+          />
+          <DateOption
+            value="weekly"
+            onChange={this.dateRangeChange}
+            dateRange={this.state.dateRange}
+          />
+          <DateOption
+            value="monthly"
+            onChange={this.dateRangeChange}
+            dateRange={this.state.dateRange}
+          />
+        <span className="list-options-label list-options-label__second">Language:</span>
+          <LanguageOptions  
+            onChange={this.languageChange} 
+            selectedLanguage={this.state.selectedLanguage}
+            languagesList={this.state.languagesList}
+          />
+        </div>
         <DataTabel 
           isDataLoading={this.state.isDataLoading} 
           data={this.state.data}

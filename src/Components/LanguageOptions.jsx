@@ -6,7 +6,7 @@ export default function LanguageOptions(props) {
   
   const isListReady = Object.keys(props.languagesList).length > 0;
 
-  return ( <select onChange={props.onChange} value={props.selectedLanguage}>
+  return ( <select onChange={props.onChange} value={props.selectedLanguage} className="language-option">
     <optgroup>
       <option value='' key="All">All</option>
     </optgroup>

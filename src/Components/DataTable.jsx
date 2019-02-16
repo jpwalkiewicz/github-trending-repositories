@@ -20,10 +20,16 @@ export default function DataTable(props) {
             <th>
               Language
             </th>
+            <th className="td-stars">
+              <span role="img" aria-label="link">🌟</span>
+            </th>
+            <th className="td-forks">
+              <span role="img" aria-label="link">🍴</span>
+            </th>
             <th>
               Repository Name
             </th>
-            <th>
+            <th className="td-author">
               Author
             </th>
             <th>
@@ -41,14 +47,14 @@ export default function DataTable(props) {
             />)
           }
           {isDataLoading && <tr className="row">
-              <th colSpan="5"> 
+              <th colSpan="7"> 
                <DotLoader />
               </th>
           </tr>}
             {data.length === 0
               && !isDataLoading
               && <tr className="row">
-                <th colSpan="5"> 
+                <th colSpan="7"> 
                   <h2>
                       Sorry, no data available for this language or date range, try again later
                       </h2>

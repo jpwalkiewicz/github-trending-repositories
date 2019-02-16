@@ -1,0 +1,17 @@
+@charset 'utf-8';
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto|Source+Code+Pro');
+
+/* Colors */
+$font: #000;
+$border-table: gray;
+$border-row: #f2f2f2;
+$table-head: #d1d1d1;
+$loader-dot: red;
+
+
+/* Shadows and Gradients */
+$bcg-gradient: linear-gradient(45deg, #ffffff 25%, #fafafa 25%, #fafafa 50%, #ffffff 50%, #ffffff 75%, #fafafa 75%, #fafafa 100%);
+$boxshadow-hover: 0px 0px 23px -4px rgba(0,0,0,0.75);;
+
